@@ -12,6 +12,7 @@
           <td>{{ animal.species }}</td>
           <td>{{ animal.name }}</td>
           <td>{{ animal.birth }}</td>
+          <td><button @click="removeAnimal(animal)">Remove animal</button></td>
         </tr>
       </tbody>
     </table>
@@ -30,6 +31,11 @@ export default {
         {species: 'cat', name: 'Mike', birth: ''},
         {species: 'dog', name: 'Janny', birth: ''}
       ]
+    }
+  },
+  methods: {
+    removeAnimal(animal) {
+      this.animals.splice(this.animals.indexOf(animal));
     }
   }
 }
