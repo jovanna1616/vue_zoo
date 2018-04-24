@@ -14,6 +14,7 @@
         <th>Animal species</th>
         <th>Animal name</th>
         <th>Animal b-day</th>
+        <th>Animal sector</th>
         <th>&nbsp;</th>
       </thead>
       <tbody>
@@ -26,6 +27,13 @@
           <td><button @click="moveToTop(animal)">Move animal to top</button></td>
         </tr>
       </tbody>
+    </table>
+    <table>
+      <tr v-for="(sector, key) in sectors" :key="key">
+          <td>{{ sector.name }}</td>
+          <td>{{ sector.surface }}</td>
+          <td><button @click="seeAnimalList(sector)">See animal list</button></td>
+        </tr>
     </table>
   </div>
 </template>
@@ -40,6 +48,7 @@ export default {
   name: 'AnimalList',
   data() {
     return {
+      sectors: sectors,
       animals: [
         {species: 'lion', name: 'Tom', birth: '2018-01-01', sector: sectors[2].name},
         {species: 'frog', name: 'Jerry', birth: '2018-02-01', sector: sectors[0].name},
@@ -70,6 +79,14 @@ export default {
         birth: ''
       }
     },
+    seeAnimalList(sector) {
+      const animalsList=[];		
+      this.animals.forEach(function(animal) {
+        if(animal.sector === sector.name) 
+          animalsList.push(animal.name); 
+      });		
+      alert(animalsList);
+    }
   }
 }
 </script>
