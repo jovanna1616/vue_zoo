@@ -1,5 +1,14 @@
 <template>
   <div>
+    <form @submit.prevent="addAnimal">
+      <label for="species"></label>
+      <input v-model="newAnimal.species" type="text" placeholder="Species">
+      <label for="name"></label>
+      <input v-model="newAnimal.name" type="text" placeholder="Name">
+      <label for="birth"></label>
+      <input v-model="newAnimal.birth" type="text" placeholder="Birth">
+      <button>Add animal</button>
+    </form>
     <table>
       <thead>
         <th>Animal species</th>
@@ -31,7 +40,12 @@ export default {
         {species: 'butterfly', name: 'Melly', birth: '2017-01-01'},
         {species: 'cat', name: 'Mike', birth: ''},
         {species: 'dog', name: 'Janny', birth: ''}
-      ]
+      ],
+      newAnimal: {
+        species: '',
+        name: '',
+        birth: ''
+    }
     }
   },
   methods: {
@@ -41,7 +55,15 @@ export default {
     moveToTop(animal) {
       this.animals.pop(animal);
       this.animals.unshift(animal);
-    }
+    },
+    addAnimal() {
+      this.animals.push(this.newAnimal);
+      this.newAnimal = {
+        species: '',
+        name: '',
+        birth: ''
+      }
+    },
   }
 }
 </script>
