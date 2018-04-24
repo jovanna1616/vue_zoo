@@ -8,7 +8,7 @@
         <th>&nbsp;</th>
       </thead>
       <tbody>
-        <tr v-for="(animal, key) in animals" :key="key">
+        <tr v-for="(animal, key) in animals" :key="key" v-if="animal.birth ? animal.birth : animal.birth='unknown'">
           <td>{{ animal.species }}</td>
           <td>{{ animal.name }}</td>
           <td>{{ animal.birth }}</td>
@@ -27,8 +27,8 @@ export default {
         {species: 'lion', name: 'Tom', birth: '2018-01-01'},
         {species: 'frog', name: 'Jerry', birth: '2018-02-01'},
         {species: 'butterfly', name: 'Melly', birth: '2017-01-01'},
-        {species: 'cat', name: 'Mike', birth: '2018-03-01'},
-        {species: 'dog', name: 'Janny', birth: '2018-01-01'}
+        {species: 'cat', name: 'Mike', birth: ''},
+        {species: 'dog', name: 'Janny', birth: ''}
       ]
     }
   }
