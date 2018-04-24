@@ -21,6 +21,7 @@
           <td>{{ animal.species }}</td>
           <td>{{ animal.name }}</td>
           <td>{{ animal.birth }}</td>
+          <td>{{ animal.sector }}</td>
           <td><button @click="removeAnimal(animal)">Remove animal</button></td>
           <td><button @click="moveToTop(animal)">Move animal to top</button></td>
         </tr>
@@ -30,22 +31,27 @@
 </template>
 
 <script>
+const sectors = [
+  {name: 'Sector 1', surface: 'Lorem'},
+  {name: 'Sector 2', surface: 'Ipsum'},
+  {name: 'Sector 3', surface: 'Dolor'}
+]
 export default {
   name: 'AnimalList',
   data() {
     return {
       animals: [
-        {species: 'lion', name: 'Tom', birth: '2018-01-01'},
-        {species: 'frog', name: 'Jerry', birth: '2018-02-01'},
-        {species: 'butterfly', name: 'Melly', birth: '2017-01-01'},
-        {species: 'cat', name: 'Mike', birth: ''},
-        {species: 'dog', name: 'Janny', birth: ''}
+        {species: 'lion', name: 'Tom', birth: '2018-01-01', sector: sectors[2].name},
+        {species: 'frog', name: 'Jerry', birth: '2018-02-01', sector: sectors[0].name},
+        {species: 'butterfly', name: 'Melly', birth: '2017-01-01', sector: sectors[1].name},
+        {species: 'cat', name: 'Mike', birth: '', sector: sectors[2].name},
+        {species: 'dog', name: 'Janny', birth: '', sector: sectors[0].name}
       ],
       newAnimal: {
         species: '',
         name: '',
         birth: ''
-    }
+      }
     }
   },
   methods: {
